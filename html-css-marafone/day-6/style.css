@@ -1,0 +1,208 @@
+/* Обнуление стилей */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Устанавливаем модель размеров, учитывающую padding и border в общую ширину элемента */
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+ul[role='list'],
+ol[role='list'] {
+    list-style: none;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid currentColor;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+article > *:first-child {
+    margin-top: 0;
+}
+
+article > *:last-child {
+    margin-bottom: 0;
+}
+
+button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+input,
+select,
+textarea,
+button {
+    appearance: none;
+    border-radius: 0;
+}
+
+[type='search'] {
+    -webkit-appearance: textfield;
+    outline-offset: -2px;
+}
+
+[type='checkbox'],
+[type='radio'] {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button {
+    height: auto;
+}
+
+[type='search'] {
+    -webkit-appearance: textfield;
+    outline-offset: -2px;
+}
+
+[type='search']::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+[type='text'],
+[type='number'],
+[type='search'],
+[type='password'],
+[type='email'],
+[type='url'] {
+    appearance: none;
+    border-radius: 0;
+}
+
+summary {
+    display: list-item;
+}
+
+progress {
+    vertical-align: baseline;
+}
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    opacity: 0.54;
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    opacity: 0.54;
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    opacity: 0.54;
+}
+
+::selection {
+    background-color: #ffb7b7;
+    color: white;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+[aria-busy='true'] {
+    cursor: progress;
+}
+
+[aria-hidden='false'][hidden] {
+    display: none !important;
+}
+
+[aria-disabled='true'] {
+    cursor: not-allowed;
+}
+
+[aria-disabled='false'] {
+    cursor: default;
+}
+
+/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.main-container {
+    margin: 16px;
+}
+
+.main-title {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+
+    margin-bottom: 16px;
+}
+
+.square-external {
+    width: 181px;
+    height: 221px;
+    border-radius: 24px;
+    padding: 16px;
+    margin-right: 16px;
+    background: #a6a6a6 url('images/1675475190_gas-kvas-com-p-zvezdnoe-nebo-fonovii-risunok-8.jpg') 100%;
+    display: inline-block;
+}
+
+.square-internal {
+    width: 149px;
+    height: 138px;
+    border-radius: 16px;
+    background: #ffe49d;
+    margin-bottom: 16px;
+}
+
+.first-internal-square {
+    background: url('https://avatars.mds.yandex.net/i?id=2e1535db95b0e38ef96e2343613ae1382606ba4e-13013137-images-thumbs&n=13')
+        no-repeat center center / cover;
+}
+
+.second-internal-square {
+    background: url('https://avatars.mds.yandex.net/i?id=5bbc2a74c6972f60750e9d6d28de3df6829de4da-12421676-images-thumbs&n=13')
+        no-repeat center center / cover;
+}
+
+.button {
+    width: 149px;
+    height: 35px;
+    border-radius: 10px;
+    background: #555555;
+    color: white;
+
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15px;
+}
