@@ -77,3 +77,9 @@ undefined == null; //true
 undefined === null; //false
 null == '\n0\n'; //false
 null === +'\n0\n'; //false
+
+console.log(NaN === NaN);
+console.log('21' > '3');
+
+
+console.log()
