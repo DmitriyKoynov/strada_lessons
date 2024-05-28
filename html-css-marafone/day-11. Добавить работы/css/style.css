@@ -1,0 +1,173 @@
+body {
+    color: white;
+}
+
+.body-container {
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header-container {
+    background: #07203f;
+    padding: 55px 135px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid white;
+}
+
+.header-nickname {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 36px;
+    line-height: 44px;
+    color: white;
+    text-shadow: 0px 4px 4px #000040;
+}
+
+.header-navigation {
+    display: flex;
+    gap: 40px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 36px;
+    line-height: 44px;
+    color: white;
+}
+
+.header-navigation__link {
+    position: relative;
+    color: white;
+}
+
+.header-navigation__link:hover:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 1px; /* толщина подчеркивания */
+    background-color: white; /* цвет подчеркивания */
+    box-shadow: 0px 4px 4px #000040; /* тень */
+}
+
+.about {
+    background: #07203f;
+    padding: 150px 135px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.h2-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 60px;
+    line-height: 78px;
+}
+
+.about-content__title {
+}
+
+.title--white {
+    color: white;
+}
+.title--black {
+    color: #333333;
+}
+
+.about-content__description-text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 42px;
+}
+
+.rounded-button--white {
+    background-color: #d9d9d9;
+    color: black;
+    border-radius: 100px;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+}
+.rounded-button--white:hover {
+    background-color: black;
+    color: #d9d9d9;
+}
+
+.about-content__button {
+    padding: 28px 75px 30px 75px;
+    border-radius: 100px;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 48.41px;
+}
+
+.about-image {
+    width: 516px;
+    height: 516px;
+    border-radius: 383.5px;
+    border: 0px 0px 5px 0px;
+}
+
+.possibilities {
+    text-align: center;
+    padding-top: 135px;
+    padding-bottom: 150px;
+    background: #a37b5a url('../images/possibilities-section_background.jpg') no-repeat top 30% center / cover;
+}
+
+.possibilities__title {
+    margin-bottom: 70px;
+}
+
+.possibilities-list {
+    display: flex;
+    justify-content: center;
+    gap: 58px;
+}
+
+.possibilities-list-item {
+    width: 350px;
+    height: 350px;
+    box-sizing: content-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.possibilities-list-item--dark-bg {
+    background: #07203f;
+    border: 5px solid #d9aa90;
+}
+.possibilities-list-item--light-bg {
+    background: #d9aa90;
+    border: 5px solid #07203f;
+}
+
+.possibilities-item__image {
+    width: 350px;
+    height: 223px;
+    object-fit: contain;
+}
+
+.possibilities-item__title-container {
+    color: white;
+    font-family: Montserrat;
+    font-size: 64px;
+    font-weight: 800;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
