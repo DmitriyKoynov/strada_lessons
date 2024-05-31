@@ -48,11 +48,9 @@ const list = {
     },
     showList() {
         console.log('--------');
-        for (const task in this) {
-            if (typeof this[task] === 'string') {
-                console.log(`"${task}": ${this[task]}`);
-            }
-        }
+        this.showTasksWithSpecificState(TODO);
+        this.showTasksWithSpecificState(IN_PROGRESS);
+        this.showTasksWithSpecificState(DONE);
         console.log('--------');
     },
 
@@ -65,11 +63,23 @@ const list = {
     },
     checkTaskExists(task) {
         return task in this;
+    },
+    showTasksWithSpecificState(state) {
+        let isEmpty = true;
+        console.log(`${state}:`);
+        for (const task in this) {
+            if (this[task] === state) {
+                console.log(`\t"${task}"`);
+                isEmpty = false;
+            }
+        }
+        if (isEmpty) {
+            console.log(`\t—`);
+        }
     }
 };
 
-//////////////////// Тесты
-
+///////////////////////////////////////////////////////// Тесты
 // Наполняем список задачами
 list.addTask('Погулять с собакой', TODO);
 list.addTask('Выпить винишка', IN_PROGRESS);
