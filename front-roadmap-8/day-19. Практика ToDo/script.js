@@ -10,47 +10,55 @@ const ERROR_TASK_EXISTS = `Ошибка. Такая задача уже есть
 const ERROR_TASK_NOT_FOUND = 'Ошибка. Задача не найдена в списке.';
 
 const list = {
-    addTask(task, state = TODO) {
+    addTask(task, status = TODO) {
         if (!this.checkTaskType(task)) {
-            return ERROR_INVALID_TASK_TYPE;
+            console.log(ERROR_INVALID_TASK_TYPE);
+            return;
         }
-        if (!this.checkState(state)) {
-            return ERROR_INVALID_STATUS;
+        if (!this.checkStatus(status)) {
+            console.log(ERROR_INVALID_STATUS);
+            return;
         }
         if (this.checkTaskExists(task)) {
-            return ERROR_TASK_EXISTS;
+            console.log(ERROR_TASK_EXISTS);
+            return;
         }
-        this[task] = state;
+        this[task] = status;
         return this;
     },
-    changeStatus(task, state) {
+    changeStatus(task, status) {
         if (!this.checkTaskType(task)) {
-            return ERROR_INVALID_TASK_TYPE;
+            console.log(ERROR_INVALID_TASK_TYPE);
+            return;
         }
-        if (!this.checkState(state)) {
-            return ERROR_INVALID_STATUS;
+        if (!this.checkStatus(status)) {
+            console.log(ERROR_INVALID_STATUS);
+            return;
         }
         if (!this.checkTaskExists(task)) {
-            return ERROR_TASK_NOT_FOUND;
+            console.log(ERROR_TASK_NOT_FOUND);
+            return;
         }
-        this[task] = state;
+        this[task] = status;
         return this;
     },
     deleteTask(task) {
         if (!this.checkTaskType(task)) {
-            return ERROR_INVALID_TASK_TYPE;
+            console.log(ERROR_INVALID_TASK_TYPE);
+            return;
         }
         if (!this.checkTaskExists(task)) {
-            return ERROR_TASK_NOT_FOUND;
+            console.log(ERROR_TASK_NOT_FOUND);
+            return;
         }
         delete this[task];
         return this;
     },
     showList() {
         console.log('--------');
-        this.showTasksWithSpecificState(TODO);
-        this.showTasksWithSpecificState(IN_PROGRESS);
-        this.showTasksWithSpecificState(DONE);
+        this.showTasksWithSpecificStatus(TODO);
+        this.showTasksWithSpecificStatus(IN_PROGRESS);
+        this.showTasksWithSpecificStatus(DONE);
         console.log('--------');
     },
 
@@ -58,17 +66,17 @@ const list = {
     checkTaskType(task) {
         return typeof task === 'string';
     },
-    checkState(state) {
-        return state === TODO || state === IN_PROGRESS || state === DONE;
+    checkStatus(status) {
+        return status === TODO || status === IN_PROGRESS || status === DONE;
     },
     checkTaskExists(task) {
         return task in this;
     },
-    showTasksWithSpecificState(state) {
+    showTasksWithSpecificStatus(status) {
         let isEmpty = true;
-        console.log(`${state}:`);
+        console.log(`${status}:`);
         for (const task in this) {
-            if (this[task] === state) {
+            if (this[task] === status) {
                 console.log(`\t"${task}"`);
                 isEmpty = false;
             }
