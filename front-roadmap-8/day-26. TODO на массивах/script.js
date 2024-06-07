@@ -5,6 +5,7 @@ const taskStatus = {
     DONE: 'Done'
 };
 
+// Константы для ошибок
 const errorMessages = {
     ERROR_INVALID_TASK_TYPE: `Ошибка. Задача может быть только строкой.`,
     ERROR_INVALID_STATUS: `Ошибка. Указан неверный статус. Задача может иметь статусы ${taskStatus.TODO}, ${taskStatus.IN_PROGRESS}, ${taskStatus.DONE}.`,
@@ -15,15 +16,15 @@ const errorMessages = {
 const list = {
     addTask(task, status = taskStatus.TODO) {
         if (!this.checkTaskType(task)) {
-            console.log(errorMessages.ERROR_INVALID_TASK_TYPE);
+            console.error(errorMessages.ERROR_INVALID_TASK_TYPE);
             return;
         }
         if (!this.checkStatus(status)) {
-            console.log(errorMessages.ERROR_INVALID_STATUS);
+            console.error(errorMessages.ERROR_INVALID_STATUS);
             return;
         }
         if (this.checkTaskExists(task)) {
-            console.log(errorMessages.ERROR_TASK_EXISTS);
+            console.error(errorMessages.ERROR_TASK_EXISTS);
             return;
         }
         this[task] = status;
@@ -31,15 +32,15 @@ const list = {
     },
     changeStatus(task, status) {
         if (!this.checkTaskType(task)) {
-            console.log(errorMessages.ERROR_INVALID_TASK_TYPE);
+            console.error(errorMessages.ERROR_INVALID_TASK_TYPE);
             return;
         }
         if (!this.checkStatus(status)) {
-            console.log(errorMessages.ERROR_INVALID_STATUS);
+            console.error(errorMessages.ERROR_INVALID_STATUS);
             return;
         }
         if (!this.checkTaskExists(task)) {
-            console.log(errorMessages.ERROR_TASK_NOT_FOUND);
+            console.error(errorMessages.ERROR_TASK_NOT_FOUND);
             return;
         }
         this[task] = status;
@@ -47,11 +48,11 @@ const list = {
     },
     deleteTask(task) {
         if (!this.checkTaskType(task)) {
-            console.log(errorMessages.ERROR_INVALID_TASK_TYPE);
+            console.error(errorMessages.ERROR_INVALID_TASK_TYPE);
             return;
         }
         if (!this.checkTaskExists(task)) {
-            console.log(errorMessages.ERROR_TASK_NOT_FOUND);
+            console.error(errorMessages.ERROR_TASK_NOT_FOUND);
             return;
         }
         delete this[task];
