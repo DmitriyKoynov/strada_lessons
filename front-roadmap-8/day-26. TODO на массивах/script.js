@@ -29,7 +29,7 @@ const taskList = [
 ];
 
 // Функции-проверки
-const checkTaskName = name => typeof name === 'string';
+const checkTaskName = name => typeof name === 'string' && name.trim();
 const checkStatus = status => Object.values(permittedStatuses).includes(status);
 const checkPriority = priority => Object.values(permittedPriorities).includes(priority);
 const checkTaskExists = name => taskList.some(task => task.name === name);
@@ -146,6 +146,8 @@ addTask('Помыть полы');
 addTask('Сходить в магазин', permittedStatuses.TODO, permittedPriorities.LOW);
 // Вернет ошибку ERROR_INVALID_TASK_NAME
 addTask(123);
+// Вернет ошибку ERROR_INVALID_TASK_NAME
+addTask('');
 // Вернет ошибку ERROR_INVALID_STATUS
 addTask('Украсть кота', 'In my dreams');
 // Вернет ошибку ERROR_INVALID_PRIORITY
