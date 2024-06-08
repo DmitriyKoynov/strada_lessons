@@ -1,82 +1,38 @@
 // Константы для статусов
-const taskStatus = {
+const permittedStatuses = {
     TODO: 'To do',
     IN_PROGRESS: 'In progress',
     DONE: 'Done'
 };
 
 // Константы для приоритета
-const taskPriority = {
-    LOW: 'Low',
-    MEDIUM: 'Medium',
-    HIGH: 'High'
-};
-
-const priorityValue = {
-    Low: 3,
-    Medium: 2,
-    High: 1
+const permittedPriorities = {
+    LOW: { name: 'Low', value: 3 },
+    MEDIUM: { name: 'Medium', value: 2 },
+    HIGH: { name: 'High', value: 1 }
 };
 
 // Константы для ошибок
 const errorMessages = {
-    ERROR_INVALID_TASK_TYPE: `Ошибка. Задача может быть только строкой.`,
-    ERROR_INVALID_STATUS: `Ошибка. Указан неверный статус. Задача может иметь статусы ${taskStatus.TODO}, ${taskStatus.IN_PROGRESS}, ${taskStatus.DONE}.`,
-    ERROR_INVALID_PRIORITY: `Ошибка. Указан неверный приоритет. Задача может иметь приоритеты ${taskPriority.LOW}, ${taskPriority.MEDIUM}, ${taskPriority.HIGH}.`,
+    ERROR_INVALID_TASK_NAME: `Ошибка. Задача может быть только строкой.`,
+    ERROR_INVALID_STATUS: `Ошибка. Указан неверный статус. Задача может иметь статусы только из объекта permittedStatuses.`,
+    ERROR_INVALID_PRIORITY: `Ошибка. Указан неверный приоритет. Задача может иметь приоритеты только из объекта permittedPriorities.`,
     ERROR_TASK_EXISTS: `Ошибка. Такая задача уже есть в списке.`,
     ERROR_TASK_NOT_FOUND: 'Ошибка. Задача не найдена в списке.'
 };
 
 const taskList = [
-    { name: 'create a post', status: taskStatus.IN_PROGRESS, priority: taskPriority.LOW }, // каждый элемент массива объект
-    { name: 'find a car', status: taskStatus.TODO, priority: taskPriority.MEDIUM }, // каждый элемент массива объект
-    { name: 'go to bed', status: taskStatus.TODO, priority: taskPriority.HIGH }, // каждый элемент массива объект
-    { name: 'test', status: taskStatus.DONE, priority: taskPriority.HIGH } // в объекте есть все данные о задаче
+    { name: 'create a post', status: permittedStatuses.IN_PROGRESS, priority: permittedPriorities.LOW },
+    { name: 'find a car', status: permittedStatuses.TODO, priority: permittedPriorities.MEDIUM },
+    { name: 'go to bed', status: permittedStatuses.TODO, priority: permittedPriorities.HIGH },
+    { name: 'test', status: permittedStatuses.DONE, priority: permittedPriorities.HIGH }
 ];
 
-const addTask = (name, status, priority) => {
-    let newTask = { name, status, priority };
-    taskList.push(newTask);
-    console.log(`Добавлена новая задача '${name}'`);
-};
-addTask('Помыть кота', taskStatus.TODO, taskPriority.HIGH);
-
-const changeTaskStatus = (name, newStatus) => {
-    let taskIndex = getTaskIndex(name);
-    taskList[taskIndex].status = newStatus;
-    console.log(`Статус задачи '${name}' изменён на '${newStatus}'`);
-};
-changeTaskStatus('Помыть кота', taskStatus.IN_PROGRESS);
-
-const changeTaskPriority = (name, newPriority) => {
-    let taskIndex = getTaskIndex(name);
-    taskList[taskIndex].priority = newPriority;
-    console.log(`Приоритет задачи '${name}' изменён на '${newPriority}'`);
-};
-changeTaskPriority('Помыть кота', taskPriority.MEDIUM);
-
-const deleteTask = name => {
-    let taskIndex = getTaskIndex(name);
-    taskList.splice(taskIndex, 1);
-    console.log(`Удалена задача '${name}'`);
-};
-deleteTask('test');
-
-const showList = () => {
-    let todoArray = taskList.filter(task => task.status === taskStatus.TODO);
-    let inProgressArray = taskList.filter(task => task.status === taskStatus.IN_PROGRESS);
-    let doneArray = taskList.filter(task => task.status === taskStatus.DONE);
-
-    sortByPriority(todoArray);
-    sortByPriority(inProgressArray);
-    sortByPriority(doneArray);
-
-    showArray(todoArray, taskStatus.TODO);
-    showArray(inProgressArray, taskStatus.IN_PROGRESS);
-    showArray(doneArray, taskStatus.DONE);
-};
-showList();
-console.log();
+// Функции-проверки
+const checkTaskName = name => typeof name === 'string';
+const checkStatus = status => Object.values(permittedStatuses).includes(status);
+const checkPriority = priority => Object.values(permittedPriorities).includes(priority);
+const checkTaskExists = name => taskList.some(task => task.name === name);
 
 function showArray(array, status) {
     console.log(`${status}:`);
@@ -84,118 +40,143 @@ function showArray(array, status) {
         console.log(`\t—`);
     }
     for (task of array) {
-        console.log(`\tЗадача: "${task.name}", приоритет: "${task.priority}"`);
+        console.log(`\tЗадача: "${task.name}", приоритет: "${task.priority.name}"`);
     }
 }
 
 function sortByPriority(array) {
-    array.sort((a, b) => priorityValue[a.priority] - priorityValue[b.priority]);
+    array.sort((a, b) => a.priority.value - b.priority.value);
 }
 
 function getTaskIndex(name) {
     return taskList.findIndex(task => task.name === name);
 }
-// // const list = {
-//     // addTask(task, status = taskStatus.TODO) {
-//     //     if (!this.checkTaskType(task)) {
-//     //         console.error(errorMessages.ERROR_INVALID_TASK_TYPE);
-//     //         return;
-//     //     }
-//     //     if (!this.checkStatus(status)) {
-//     //         console.error(errorMessages.ERROR_INVALID_STATUS);
-//     //         return;
-//     //     }
-//     //     if (this.checkTaskExists(task)) {
-//     //         console.error(errorMessages.ERROR_TASK_EXISTS);
-//     //         return;
-//     //     }
-//     //     this[task] = status;
-//     //     return this;
-//     // },
 
-//     changeStatus(task, status) {
-//         if (!this.checkTaskType(task)) {
-//             console.error(errorMessages.ERROR_INVALID_TASK_TYPE);
-//             return;
-//         }
-//         if (!this.checkStatus(status)) {
-//             console.error(errorMessages.ERROR_INVALID_STATUS);
-//             return;
-//         }
-//         if (!this.checkTaskExists(task)) {
-//             console.error(errorMessages.ERROR_TASK_NOT_FOUND);
-//             return;
-//         }
-//         this[task] = status;
-//         return this;
-//     },
-//     deleteTask(task) {
-//         if (!this.checkTaskType(task)) {
-//             console.error(errorMessages.ERROR_INVALID_TASK_TYPE);
-//             return;
-//         }
-//         if (!this.checkTaskExists(task)) {
-//             console.error(errorMessages.ERROR_TASK_NOT_FOUND);
-//             return;
-//         }
-//         delete this[task];
-//         return this;
-//     },
-//     showList() {
-//         console.log('--------');
-//         this.showTasksWithSpecificStatus(taskStatus.TODO);
-//         this.showTasksWithSpecificStatus(taskStatus.IN_PROGRESS);
-//         this.showTasksWithSpecificStatus(taskStatus.DONE);
-//         console.log('--------');
-//     },
+const addTask = (name, status = permittedStatuses.TODO, priority = permittedPriorities.MEDIUM) => {
+    if (!checkTaskName(name)) {
+        console.error(errorMessages.ERROR_INVALID_TASK_NAME);
+        return;
+    }
+    if (!checkStatus(status)) {
+        console.error(errorMessages.ERROR_INVALID_STATUS);
+        return;
+    }
+    if (!checkPriority(priority)) {
+        console.error(errorMessages.ERROR_INVALID_PRIORITY);
+        return;
+    }
+    if (checkTaskExists(name)) {
+        console.error(errorMessages.ERROR_TASK_EXISTS);
+        return;
+    }
+    let newTask = { name, status, priority };
+    taskList.push(newTask);
+    console.log(`Добавлена новая задача '${name}'`);
+};
 
-//     // Вспомогательные внутренние методы
-//     checkTaskType(task) {
-//         return typeof task === 'string';
-//     },
-//     checkStatus(status) {
-//         return status === taskStatus.TODO || status === taskStatus.IN_PROGRESS || status === taskStatus.DONE;
-//     },
-//     checkTaskExists(task) {
-//         return task in this;
-//     },
-//     showTasksWithSpecificStatus(status) {
-//         let isEmpty = true;
-//         console.log(`${status}:`);
-//         for (const task in this) {
-//             if (this[task] === status) {
-//                 console.log(`\t"${task}"`);
-//                 isEmpty = false;
-//             }
-//         }
-//         if (isEmpty) {
-//             console.log(`\t—`);
-//         }
-//     }
-// };
+const changeTaskStatus = (name, newStatus) => {
+    if (!checkTaskName(name)) {
+        console.error(errorMessages.ERROR_INVALID_TASK_NAME);
+        return;
+    }
+    if (!checkStatus(newStatus)) {
+        console.error(errorMessages.ERROR_INVALID_STATUS);
+        return;
+    }
+    if (!checkTaskExists(name)) {
+        console.error(errorMessages.ERROR_TASK_NOT_FOUND);
+        return;
+    }
+    let taskIndex = getTaskIndex(name);
+    taskList[taskIndex].status = newStatus;
+    console.log(`Статус задачи '${name}' изменён на '${newStatus}'`);
+};
 
-// ///////////////////////////////////////////////////////// Тесты
-// // Наполняем список задачами
-// list.addTask('Погулять с собакой', taskStatus.TODO);
-// list.addTask('Выпить винишка', taskStatus.IN_PROGRESS);
-// list.addTask('Поспать', taskStatus.DONE);
+const changeTaskPriority = (name, newPriority) => {
+    if (!checkTaskName(name)) {
+        console.error(errorMessages.ERROR_INVALID_TASK_NAME);
+        return;
+    }
+    if (!checkPriority(newPriority)) {
+        console.error(errorMessages.ERROR_INVALID_PRIORITY);
+        return;
+    }
+    if (!checkTaskExists(name)) {
+        console.error(errorMessages.ERROR_TASK_NOT_FOUND);
+        return;
+    }
+    let taskIndex = getTaskIndex(name);
+    taskList[taskIndex].priority = newPriority;
+    console.log(`Приоритет задачи '${name}' изменён на '${newPriority[name]}'`);
+};
 
-// //Проверяем метод list.addTask()
-// list.addTask('Помыть полы'); // Вернет объект, в который добавим задачу «Помыть полы» со статусом «To do»
-// list.addTask(123); // Вернет ошибку
-// list.addTask('Украсть кота', 'In my dreams'); // Вернет ошибку
-// list.addTask('Погулять с собакой'); // Вернет ошибку
+const deleteTask = name => {
+    if (!checkTaskName(name)) {
+        console.error(errorMessages.ERROR_INVALID_TASK_NAME);
+        return;
+    }
+    if (!checkTaskExists(name)) {
+        console.error(errorMessages.ERROR_TASK_NOT_FOUND);
+        return;
+    }
+    let taskIndex = getTaskIndex(name);
+    taskList.splice(taskIndex, 1);
+    console.log(`Удалена задача '${name}'`);
+};
 
-// //Проверяем метод list.changeStatus()
-// list.changeStatus('Помыть полы', taskStatus.IN_PROGRESS); // Вернет объект, в которым изменит статус задачи «Помыть полы»
-// list.changeStatus(123, taskStatus.TODO); // Вернет ошибку
-// list.changeStatus('Стать счастливым', 'Только в сказках'); // Вернет ошибку
-// list.changeStatus('Уничтожить снеговика', taskStatus.TODO); // Вернет ошибку
+const showTaskList = () => {
+    let todoArray = taskList.filter(task => task.status === permittedStatuses.TODO);
+    let inProgressArray = taskList.filter(task => task.status === permittedStatuses.IN_PROGRESS);
+    let doneArray = taskList.filter(task => task.status === permittedStatuses.DONE);
 
-// //Проверяем метод list.deleteTask()
-// list.deleteTask('Поспать'); // Вернёт объект, из которого удалит задачу «Поспать»
-// list.deleteTask(123); // Вернет ошибку
-// list.deleteTask('Захватить мир'); // Вернет ошибку
+    sortByPriority(todoArray);
+    sortByPriority(inProgressArray);
+    sortByPriority(doneArray);
 
-// //Проверяем метод list.showList()
-// list.showList(); // Покажет задачи со статусами (методы показывать не будет)
+    console.log('--------');
+    showArray(todoArray, permittedStatuses.TODO);
+    showArray(inProgressArray, permittedStatuses.IN_PROGRESS);
+    showArray(doneArray, permittedStatuses.DONE);
+    console.log('--------');
+};
+
+// Добавим задачу «Помыть полы» со статусом TODO и приоритетом LOW
+addTask('Помыть полы');
+// Добавим задачу «Помыть полы» со статусом «To do» и приоритетом «Medium»
+addTask('Сходить в магазин', permittedStatuses.TODO, permittedPriorities.LOW);
+// Вернет ошибку ERROR_INVALID_TASK_NAME
+addTask(123);
+// Вернет ошибку ERROR_INVALID_STATUS
+addTask('Украсть кота', 'In my dreams');
+// Вернет ошибку ERROR_INVALID_PRIORITY
+addTask('Украсть кота', permittedStatuses.TODO, 'THE HIGHEST');
+// Вернет ошибку ERROR_TASK_EXISTS
+addTask('test');
+
+// Изменим статус у задачи «Помыть полы» на IN_PROGRESS
+changeTaskStatus('test', permittedStatuses.IN_PROGRESS);
+// Вернет ошибку ERROR_INVALID_TASK_NAME
+changeTaskStatus(123, permittedStatuses.TODO);
+// Вернет ошибку ERROR_INVALID_STATUS
+changeTaskStatus('Стать счастливым', 'Только в сказках');
+// Вернет ошибку ERROR_TASK_NOT_FOUND
+changeTaskStatus('Уничтожить снеговика', permittedStatuses.TODO);
+
+// Изменим приоритет у задачи «Помыть полы» на HIGH
+changeTaskPriority('Помыть полы', permittedPriorities.HIGH);
+// Вернет ошибку ERROR_INVALID_TASK_NAME
+changeTaskPriority(123, permittedPriorities.HIGH);
+// Вернет ошибку ERROR_INVALID_PRIORITY
+changeTaskPriority('Стать счастливым', 'THE HIGHEST');
+// Вернет ошибку ERROR_TASK_NOT_FOUND
+changeTaskPriority('Уничтожить снеговика', permittedPriorities.HIGH);
+
+// Удалим задачу «Помыть полы»
+deleteTask('Помыть полы');
+// Вернет ошибку ERROR_INVALID_TASK_NAME
+deleteTask(123);
+// Вернет ошибку ERROR_TASK_NOT_FOUND
+deleteTask('Захватить мир');
+
+// Выведем все задачи. Отфильтруем их по статусам и отсортируем по приоритетам
+showTaskList();
