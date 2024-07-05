@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Калькулятор</title>
+    </head>
+    <body>
+        <div class="content">
+            <div class="calculator-controls">
+                <input class="first-number-input control" type="number" />
+                <select class="operation-select control" name="operation" id="operation">
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="*">*</option>
+                    <option value="/">/</option>
+                </select>
+                <input class="second-number-input control" type="number" />
+                <button class="equals-button control" type="button">=</button>
+                <input class="result-input control" disabled placeholder="Тут будет результат" />
+            </div>
+            <div class="results-header">Результаты вычислений</div>
+            <div class="previous-results"></div>
+            <button class="clear-button controls" type="button">Очистить результаты</button>
+        </div>
+        <script type="module" src="script.js"></script>
+        <script type="module" src="operations.js"></script>
+        <!-- <script src="theory.js" defer></script> -->
+    </body>
+</html>
+Самый главынй минус этой клавы - я не ощущаю нажитий и часто не попадаю по клавишам. Поэтому не могу к ней привыцкнул
