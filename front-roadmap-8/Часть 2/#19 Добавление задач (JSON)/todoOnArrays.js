@@ -1,3 +1,5 @@
+import initialTasks from "./initialTasks.json" with {type: "json"};
+
 // Константы для статусов
 export const permittedStatuses = {
     TODO: 'To do',
@@ -21,12 +23,8 @@ const errorMessages = {
     ERROR_TASK_NOT_FOUND: 'Задача не найдена в списке.'
 };
 
-export const taskList = [
-    { name: 'create a post', status: permittedStatuses.IN_PROGRESS, priority: permittedPriorities.LOW },
-    { name: 'find a car', status: permittedStatuses.TODO, priority: permittedPriorities.LOW },
-    { name: 'go to bed', status: permittedStatuses.TODO, priority: permittedPriorities.HIGH },
-    { name: 'test', status: permittedStatuses.DONE, priority: permittedPriorities.HIGH },
-    { name: 'go to Everest', status: permittedStatuses.DONE, priority: permittedPriorities.HIGH }
+export let taskList = [
+
 ];
 
 // Функции-проверки
@@ -132,3 +130,7 @@ const showTaskList = () => {
     showArray(doneArray, permittedStatuses.DONE);
     console.log('--------');
 };
+
+export const createInitialTasks=()=>{
+    taskList = initialTasks;
+}

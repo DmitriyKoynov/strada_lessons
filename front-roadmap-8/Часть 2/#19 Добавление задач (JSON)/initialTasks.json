@@ -1,0 +1,7 @@
+[
+    { "name": "create a post", "status": "In progress", "priority": { "name": "Low", "value": 3 } },
+    { "name": "find a car", "status": "To do", "priority": { "name": "Low", "value": 3 } },
+    { "name": "go to bed", "status": "To do", "priority": { "name": "High", "value": 1 } },
+    { "name": "test", "status": "Done", "priority": { "name": "High", "value": 1 } },
+    { "name": "go to Everest", "status": "Done", "priority": { "name": "High", "value": 1 } }
+]

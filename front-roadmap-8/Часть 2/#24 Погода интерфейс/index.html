@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Погода</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="grid-container">
+            <form class="search-form">
+                <input class="search-input" type="text" placeholder="Aktobe" />
+                <button class="submit-button" type="submit">
+                    <img class="search-icon" src="icons/search.svg" alt="Иконка поиска" />
+                </button>
+            </form>
+            <div class="left-side">
+                <div class="temperature-container">
+                    <p class="temperature">14°</p>
+                </div>
+                <div class="weather-icon-container">
+                    <img class="icon" src="icons/icons8-cloud-96 1.png" alt="Иконка" />
+                </div>
+                <div class="chosen-location-and-like-container">
+                    <p class="chosen-location body-text">Town</p>
+                    <img class="like-icon" src="icons/bordered-like.svg" alt="Лайк" />
+                </div>
+            </div>
+            <div class="right-side">
+                <div class="right-header-container">
+                    <h2 class="location-name-header body-text">Added Locations:</h2>
+                </div>
+                <div class="location-list-container">
+                    <ul class="location-list">
+                        <li class="location-list-item body-text">Amur</li>
+                        <li class="location-list-item body-text">Samara</li>
+                        <li class="location-list-item body-text">Bali</li>
+                        <li class="location-list-item body-text">Dane</li>
+                        <li class="location-list-item body-text">Kilo</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
