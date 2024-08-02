@@ -138,7 +138,7 @@ body {
     gap: 4px;
 }
 
-.feature-weather-elements-container {
+.forecast-elements-container {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -146,7 +146,7 @@ body {
     gap: 8px;
 }
 
-.future-weather-container {
+.forecast-container {
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -155,7 +155,7 @@ body {
     padding: 16px 0px 8px;
 }
 
-.future-element {
+.forecast-element {
     margin: 0;
 }
 
@@ -192,7 +192,7 @@ body {
     background-repeat: no-repeat;
 }
 
-.future-weather-container {
+.forecast-container {
     display: flex;
     flex-direction: column;
 }
