@@ -1,15 +1,13 @@
 import { UI } from './UI.js';
 import { locationWeatherInfo, updateWeatherAndForecastInfo } from './getWeatherInfo.js';
 import { saveFavoriteLocationsInLocalStorage, getFavoriteLocationsFromLocalStorage } from './localStorageManager.js';
-import initialLocationsList from './json/locationsList.json' with {type: 'json'};
-
-const ERRORS_MESSAGES = {
-    limitReachedError: 'Мы можем хранить не больше 5 любимых локаций',
-    pointAlreadyInFavoritesError: 'Это место уже находится в Избранных'
-};
 
 const MAX_FAVORITE_LOCATIONS = 5;
 export let favoriteLocations = [];
+const ERRORS_MESSAGES = {
+    limitReachedError: `Мы можем хранить не больше ${MAX_FAVORITE_LOCATIONS} любимых локаций`,
+    pointAlreadyInFavoritesError: 'Это место уже находится в Избранных'
+};
 
 export function setupInitialLocations() {
     favoriteLocations = getFavoriteLocationsFromLocalStorage();
@@ -18,6 +16,7 @@ export function setupInitialLocations() {
 
 export function updateFavoriteLocationsUIList(locations = favoriteLocations) {
     clearFavoriteLocationsList();
+    if (!locations) return;
     locations.forEach(element => {
         const li = document.createElement('li');
         const p = document.createElement('p');

@@ -9,12 +9,8 @@ export const REQUEST_TYPE = {
 };
 
 export function getWeatherInfo(location, temperatureSystem, requestType) {
-    const weatherApiUrl = getWeatherApiUrl(requestType, location, temperatureSystem);
+    const weatherApiUrl = `${WeatherServerInfo.serverUrl}/${requestType}?q=${location}&units=${temperatureSystem.units}&appid=${WeatherServerInfo.apiKey}&lang=ru`;
     return fetch(weatherApiUrl).then(response => response.json());
-}
-
-function getWeatherApiUrl(requestType, location, temperatureSystem) {
-    return `${WeatherServerInfo.serverUrl}/${requestType}?q=${location}&units=${temperatureSystem.units}&appid=${WeatherServerInfo.apiKey}&lang=ru`;
 }
 
 export function getIconUrl(iconCode) {

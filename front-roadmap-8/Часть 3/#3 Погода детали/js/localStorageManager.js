@@ -9,4 +9,5 @@ export function getFavoriteLocationsFromLocalStorage() {
     if (favoriteLocationsAsString) {
         return favoriteLocationsAsString.split(',');
     }
+    return [];
 }
