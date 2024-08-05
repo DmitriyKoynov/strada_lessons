@@ -1,28 +1,12 @@
-import { favoriteLocations } from './favoriteLocations.js';
-
-export function saveFavoriteLocationsInLocalStorage() {
-    localStorage.setItem('favoriteLocations', favoriteLocations);
-}
-
-export function getFavoriteLocationsFromLocalStorage() {
-    let favoriteLocationsAsString = localStorage.getItem('favoriteLocations');
-    if (favoriteLocationsAsString) {
-        return favoriteLocationsAsString.split(',');
-    }
-    return [];
-}
-
-export const storage = {
-    getCurrentLocationInfo: function () {
-        localStorage.getItem('currentLocationInfo');
+export const localStorageManager = {
+    getFavoritesData: function () {
+        const storedData = localStorage.getItem('favoritesData');
+        if (!storedData) return [];
+        return JSON.parse(storedData);
     },
-    setCurrentLocationInfo: function (currentLocationInfo) {
-        localStorage.setItem('currentLocationInfo', currentLocationInfo);
-    },
-    getFavoriteLocationsInfo: function () {
-        localStorage.getItem('favoriteLocationsInfo');
-    },
-    setFavoriteLocationsInfo: function (favoriteLocationsInfo) {
-        localStorage.setItem('favoriteLocationsInfo', favoriteLocationsInfo);
+
+    setFavoritesData: function (favoritesData) {
+        const dataToStore = JSON.stringify(favoritesData);
+        localStorage.setItem('favoritesData', dataToStore);
     }
 };

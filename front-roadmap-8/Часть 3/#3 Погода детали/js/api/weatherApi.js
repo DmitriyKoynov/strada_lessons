@@ -8,9 +8,15 @@ export const REQUEST_TYPE = {
     FORECAST: 'forecast'
 };
 
-export function getWeatherInfo(location, temperatureSystem, requestType) {
-    const weatherApiUrl = `${WeatherServerInfo.serverUrl}/${requestType}?q=${location}&units=${temperatureSystem.units}&appid=${WeatherServerInfo.apiKey}&lang=ru`;
-    return fetch(weatherApiUrl).then(response => response.json());
+export function getLocationInfoFromServer(locationName, temperatureSystem) {
+    const weatherApiUrl = `${WeatherServerInfo.serverUrl}/${REQUEST_TYPE.WEATHER}?q=${locationName}&units=${temperatureSystem.units}&appid=${WeatherServerInfo.apiKey}&lang=ru`;
+
+    const forecastApiUrl = `${WeatherServerInfo.serverUrl}/${REQUEST_TYPE.FORECAST}?q=${locationName}&units=${temperatureSystem.units}&appid=${WeatherServerInfo.apiKey}&lang=ru`;
+
+    return Promise.all([
+        fetch(weatherApiUrl).then(response => response.json()),
+        fetch(forecastApiUrl).then(response => response.json())
+    ]);
 }
 
 export function getIconUrl(iconCode) {

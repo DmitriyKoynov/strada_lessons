@@ -16,5 +16,5 @@ export const UI = {
     FORECAST_ELEMENTS_CONTAINER: document.body.querySelector('.forecast-elements-container'),
 
     USER_CURRENT_LOCATION_ICON: document.body.querySelector('.user-location-icon'),
-    FAVORITE_LOCATIONS: document.body.querySelector('.location-list')
+    FAVORITE_LIST: document.body.querySelector('.location-list')
 };
