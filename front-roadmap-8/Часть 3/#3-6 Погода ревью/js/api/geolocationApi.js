@@ -7,8 +7,13 @@ const ERRORS_MESSAGES = {
     NOT_SUPPORTED: 'Определение геолокации не поддерживается этим браузером'
 };
 
-export function getCurrentLocation() {
-    return getCurrentCoordinates().then(coordinates => getLocation(coordinates));
+export async function getCurrentLocation() {
+    try {
+        const coordinates = await getCurrentCoordinates();
+        return getLocation(coordinates);
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 function getCurrentCoordinates() {
@@ -32,11 +37,18 @@ function getCurrentCoordinates() {
     });
 }
 
-function getLocation(coordinates) {
-    const locationApiUrl = getLocationApiUrl(coordinates);
-    return fetch(locationApiUrl)
-        .then(response => response.json())
-        .then(locationInfo => getLocationFromResponse(locationInfo));
+async function getLocation(coordinates) {
+    try {
+        const locationApiUrl = getLocationApiUrl(coordinates);
+        const response = await fetch(locationApiUrl);
+        if (!response.ok) {
+            console.error(`Сервер ответил с ошибкой ${response.status}`);
+        }
+        const locationInfo = await response.json();
+        return getLocationFromResponse(locationInfo);
+    } catch (error) {
+        console.error(error);
+    }
 
     function getLocationFromResponse(locationInfo) {
         return locationInfo.response.GeoObjectCollection.featureMember[0].GeoObject.metaDataProperty.GeocoderMetaData.Address.Components.find(

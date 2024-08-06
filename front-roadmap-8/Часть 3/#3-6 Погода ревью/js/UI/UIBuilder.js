@@ -1,4 +1,5 @@
-import { updateLikeButton } from '../eventHandlers.js';
+import { getCurrentLocationInfoAndChooseIt, updateLikeButton } from '../eventHandlers.js';
+import { favoriteList } from '../main.js';
 import { UI } from './UI.js';
 
 function updateWeatherElements(weather) {
@@ -84,4 +85,12 @@ export function createPage(favoriteList, chosenLocation) {
         updateForecastElements(chosenLocation.forecast);
     }
     updateLikeButton();
+}
+export async function initializePage() {
+    try {
+        await getCurrentLocationInfoAndChooseIt();
+        createPage(favoriteList);
+    } catch (error) {
+        console.error(error);
+    }
 }

@@ -1,7 +1,7 @@
 import { UI } from './UI/UI.js';
 import { localStorageManager } from './localStorageManager.js';
 import { Location } from './locationConstructor.js';
-import { createPage } from './UI/UIBuilder.js';
+import { initializePage } from './UI/UIBuilder.js';
 import {
     getLocationInfoBySearch,
     showRemoveButtonOnRow,
@@ -9,7 +9,7 @@ import {
     removeFavoriteLocationByRemoveButton,
     likeOrUnlikeLocation,
     convertTemperatureValue,
-    getCurrentLocationInfo
+    getCurrentLocationInfoAndChooseIt
 } from './eventHandlers.js';
 
 UI.SUBMIT_BUTTON.addEventListener('click', getLocationInfoBySearch);
@@ -23,8 +23,8 @@ UI.LIKE_BUTTON.addEventListener('click', likeOrUnlikeLocation);
 
 UI.TEMPERATURE.addEventListener('click', convertTemperatureValue);
 
-UI.USER_CURRENT_LOCATION_ICON.addEventListener('click', getCurrentLocationInfo);
+UI.USER_CURRENT_LOCATION_ICON.addEventListener('click', getCurrentLocationInfoAndChooseIt);
 
 export const favoriteList = localStorageManager.getFavoritesData();
 export const chosenLocation = new Location();
-getCurrentLocationInfo().then(() => createPage(favoriteList));
+initializePage();

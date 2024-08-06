@@ -16,14 +16,18 @@ export function getLocationInfoBySearch(event) {
 function getSearchInputValue() {
     return UI.SEARCH_INPUT.value;
 }
-function updateChosenLocationPageInfo(locationName) {
-    getLocationInfoFromServer(locationName, chosenLocation.temperatureSystem).then(
-        ([weatherInfoFromServer, forecastInfoFromServer]) => {
-            chosenLocation.weather = parseWeatherInfo(weatherInfoFromServer);
-            chosenLocation.forecast = parseForecastInfo(forecastInfoFromServer, chosenLocation.forecastElementsAmount);
-            createPage(undefined, chosenLocation);
-        }
-    );
+async function updateChosenLocationPageInfo(locationName) {
+    try {
+        const [weatherInfoFromServer, forecastInfoFromServer] = await getLocationInfoFromServer(
+            locationName,
+            chosenLocation.temperatureSystem
+        );
+        chosenLocation.weather = parseWeatherInfo(weatherInfoFromServer);
+        chosenLocation.forecast = parseForecastInfo(forecastInfoFromServer, chosenLocation.forecastElementsAmount);
+        createPage(undefined, chosenLocation);
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 export function showRemoveButtonOnRow(event) {
@@ -106,7 +110,7 @@ export function convertTemperatureValue() {
     updateChosenLocationPageInfo(chosenLocation.weather.location);
 }
 
-export async function getCurrentLocationInfo() {
+export async function getCurrentLocationInfoAndChooseIt() {
     try {
         const currentLocation = await getCurrentLocation();
         return updateChosenLocationPageInfo(currentLocation);
