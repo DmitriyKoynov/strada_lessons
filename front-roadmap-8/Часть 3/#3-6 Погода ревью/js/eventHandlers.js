@@ -62,7 +62,7 @@ export function removeFavoriteLocationByRemoveButton(event) {
 
 export function likeOrUnlikeLocation() {
     const locationName = chosenLocation.weather.location;
-    const isFavoriteLocation = favoriteList.includes(locationName);
+    const isFavoriteLocation = favoriteList.has(locationName);
     if (isFavoriteLocation) {
         removeLocationFromFavoriteList(locationName);
         createPage(favoriteList);
@@ -73,15 +73,14 @@ export function likeOrUnlikeLocation() {
 }
 
 function addLocationToFavoriteList(locationName) {
-    favoriteList.push(locationName);
+    favoriteList.add(locationName);
     localStorageManager.setFavoritesData(favoriteList);
     updateLikeButton();
     console.log(SUCCESS_MESSAGES.addSuccess(locationName));
 }
 
 function removeLocationFromFavoriteList(locationName) {
-    const locationToRemoveIndex = favoriteList.findIndex(element => element === locationName);
-    favoriteList.splice(locationToRemoveIndex, 1);
+    favoriteList.delete(locationName);
     localStorageManager.setFavoritesData(favoriteList);
     updateLikeButton();
     console.log(SUCCESS_MESSAGES.removeSuccess(locationName));
@@ -107,14 +106,17 @@ export function convertTemperatureValue() {
     updateChosenLocationPageInfo(chosenLocation.weather.location);
 }
 
-export function getCurrentLocationInfo() {
-    return getCurrentLocation()
-        .then(currentUserLocation => updateChosenLocationPageInfo(currentUserLocation))
-        .catch(error => console.error(error));
+export async function getCurrentLocationInfo() {
+    try {
+        const currentLocation = await getCurrentLocation();
+        return updateChosenLocationPageInfo(currentLocation);
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 export function updateLikeButton() {
-    const isCurrentLocationFavorite = favoriteList.includes(chosenLocation.weather.location);
+    const isCurrentLocationFavorite = favoriteList.has(chosenLocation.weather.location);
     if (isCurrentLocationFavorite) {
         UI.LIKE_BUTTON.classList.add('like-button--liked');
     }
