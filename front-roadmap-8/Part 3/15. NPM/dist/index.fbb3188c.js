@@ -593,7 +593,6 @@ var _localStorageManagerJs = require("./localStorageManager.js");
 var _locationConstructorJs = require("./locationConstructor.js");
 var _uibuilderJs = require("./UI/UIBuilder.js");
 var _eventHandlersJs = require("./eventHandlers.js");
-// import { format } from 'date-fns';
 (0, _uiJs.UI).SUBMIT_BUTTON.addEventListener("click", (0, _eventHandlersJs.getLocationInfoBySearch));
 (0, _uiJs.UI).SEARCH_FORM.addEventListener("submit", (0, _eventHandlersJs.getLocationInfoBySearch));
 (0, _uiJs.UI).FAVORITE_LIST.addEventListener("mouseover", (0, _eventHandlersJs.showRemoveButtonOnRow));
@@ -604,8 +603,7 @@ var _eventHandlersJs = require("./eventHandlers.js");
 (0, _uiJs.UI).USER_CURRENT_LOCATION_ICON.addEventListener("click", (0, _eventHandlersJs.getCurrentLocationInfoAndChooseIt));
 const favoriteList = (0, _localStorageManagerJs.localStorageManager).getFavoritesData();
 const chosenLocation = new (0, _locationConstructorJs.Location)();
-(0, _uibuilderJs.initializePage)(); // const date = format(new Date(2014, 1, 11), 'dd-MM-yy');
- // console.log(date);
+(0, _uibuilderJs.initializePage)();
 
 },{"./UI/UI.js":"eqk1K","./localStorageManager.js":"lXvOE","./locationConstructor.js":"58y3e","./UI/UIBuilder.js":"j4Ekl","./eventHandlers.js":"4840f","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eqk1K":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");

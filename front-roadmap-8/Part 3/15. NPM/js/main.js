@@ -11,7 +11,6 @@ import {
     convertTemperatureValue,
     getCurrentLocationInfoAndChooseIt
 } from './eventHandlers.js';
-// import { format } from 'date-fns';
 
 UI.SUBMIT_BUTTON.addEventListener('click', getLocationInfoBySearch);
 UI.SEARCH_FORM.addEventListener('submit', getLocationInfoBySearch);
@@ -29,6 +28,3 @@ UI.USER_CURRENT_LOCATION_ICON.addEventListener('click', getCurrentLocationInfoAn
 export const favoriteList = localStorageManager.getFavoritesData();
 export const chosenLocation = new Location();
 initializePage();
-
-// const date = format(new Date(2014, 1, 11), 'dd-MM-yy');
-// console.log(date);
