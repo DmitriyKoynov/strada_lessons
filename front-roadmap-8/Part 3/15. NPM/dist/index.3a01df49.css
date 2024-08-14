@@ -1,0 +1,253 @@
+body {
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  display: flex;
+}
+
+.body-text {
+  text-align: left;
+  cursor: default;
+  margin: 0;
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.row-container {
+  justify-content: space-between;
+  display: flex;
+}
+
+.grid-container {
+  grid-template: "search-form search-form" 45px
+                 "left-side right-side"
+                 / 1fr 1fr;
+  width: 600px;
+  display: grid;
+}
+
+.search-form {
+  border: 2px solid #000;
+  border-bottom-width: 1px;
+  grid-area: search-form;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  display: flex;
+}
+
+.search-input {
+  text-align: left;
+  border: none;
+  width: 100%;
+  padding-left: 16px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.09px;
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.submit-button {
+  background: none;
+  border: none;
+  border-radius: 8px;
+  margin-right: 4px;
+}
+
+.submit-button:hover {
+  filter: invert(50%) sepia() hue-rotate(120deg);
+  cursor: pointer;
+}
+
+.left-side {
+  border: 1px solid #000;
+  border-width: 1px 1px 2px 2px;
+  flex-direction: column;
+  grid-area: left-side;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 8px 16px 0;
+  display: flex;
+}
+
+.temperature-and-time-container {
+  text-align: left;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  display: flex;
+}
+
+.current-temperature {
+  text-align: left;
+  margin: 0;
+  font-size: 24px;
+  line-height: 40px;
+}
+
+.current-temperature:hover {
+  cursor: pointer;
+}
+
+.current-time {
+  text-align: left;
+  margin: 0;
+  font-size: 24px;
+  line-height: 40px;
+}
+
+.weather-icon-container {
+  text-align: center;
+  width: 100%;
+}
+
+.weather-icon {
+  height: 148px;
+}
+
+.chosen-location-and-like-container {
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 8px;
+  display: flex;
+}
+
+.additional-info-container {
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  display: flex;
+}
+
+.forecast-elements-container {
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin-top: 16px;
+  display: flex;
+}
+
+.forecast-container {
+  border-top: 1px solid #000;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  padding: 16px 0 8px;
+  display: flex;
+}
+
+.forecast-element {
+  margin: 0;
+}
+
+.like-button {
+  background: url("heart-default.5ed08ea6.svg") center no-repeat;
+  border: none;
+  width: 30px;
+  height: 30px;
+}
+
+.like-button:hover {
+  cursor: pointer;
+  background: url("heart-hover.3900c710.svg") center no-repeat;
+}
+
+.like-button:active, .like-button--liked {
+  background: url("heart-active.dd6deef6.svg") center no-repeat;
+}
+
+.like-button--liked:active {
+  background: url("heart-default.5ed08ea6.svg") center no-repeat;
+}
+
+.forecast-container {
+  flex-direction: column;
+  display: flex;
+}
+
+.right-side {
+  border: 2px solid #000;
+  border-width: 1px 2px 2px 1px;
+  flex-direction: column;
+  grid-area: right-side;
+  margin: 0;
+  display: flex;
+}
+
+.right-header-container {
+  border-bottom: 2px solid #000;
+  justify-content: space-between;
+  padding: 8px 14px 8px 24px;
+  display: flex;
+}
+
+.user-location-icon {
+  border-radius: 8px;
+}
+
+.user-location-icon:hover {
+  cursor: pointer;
+  filter: invert(50%) sepia() hue-rotate(120deg);
+}
+
+.location-name-header {
+  text-align: left;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+.location-list {
+  padding: 0 16px;
+  list-style-type: none;
+}
+
+.location-list-item {
+  border-radius: 8px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  padding: 8px;
+  display: flex;
+}
+
+.location-list-item:hover {
+  background: #e5e5ff;
+}
+
+.removeButton {
+  background: url("remove-default.092d41be.svg") center no-repeat;
+  border: none;
+  width: 30px;
+  height: 30px;
+}
+
+.removeButton:hover {
+  cursor: pointer;
+  background: url("remove-hover.3ccb30e8.svg") center no-repeat;
+}
+
+.removeButton:active {
+  background: url("remove-active.67f49f79.svg") center no-repeat;
+}
+/*# sourceMappingURL=index.3a01df49.css.map */

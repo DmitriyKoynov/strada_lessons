@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Погода</title>
+        <link rel="stylesheet" href="/index.3a01df49.css">
+    </head>
+    <body>
+        <div class="grid-container">
+            <form class="search-form">
+                <input class="search-input" type="text" placeholder="Введите город">
+                <button class="submit-button" type="submit">
+                    <img class="search-icon" src="/search.36f4dae5.svg" alt="Иконка поиска">
+                </button>
+            </form>
+            <div class="left-side">
+                <div class="chosen-location-and-like-container">
+                    <p class="chosen-location body-text"></p>
+                    <button class="like-button" type="button"></button>
+                </div>
+                <div class="weather-icon-container">
+                    <img class="weather-icon" src="/01d.9067abd4.svg" alt="Иконка">
+                </div>
+                <div class="temperature-and-time-container">
+                    <p class="current-temperature bold-text"></p>
+                    <p class="current-time bold-text"></p>
+                </div>
+                <div class="additional-info-container">
+                    <div>
+                        <span>Ощущается: </span>
+                        <span class="current-feels-like"></span>
+                    </div>
+                    <div class="row-container">
+                        <span>
+                            <span>Рассвет: </span>
+                            <span class="sunrise"></span>
+                        </span>
+                        <span>
+                            <span>Закат: </span>
+                            <span class="sunset"></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="forecast-elements-container"></div>
+            </div>
+            <div class="right-side">
+                <div class="right-header-container">
+                    <h2 class="location-name-header">Локации</h2>
+                    <img class="user-location-icon" src="/location-default.2ca171a1.svg" alt="Иконка">
+                </div>
+                <div class="location-list-container">
+                    <ul class="location-list"></ul>
+                </div>
+            </div>
+        </div>
+        <script src="/index.fbb3188c.js" defer=""></script>
+    </body>
+</html>
