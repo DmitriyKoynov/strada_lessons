@@ -1,6 +1,8 @@
 import { getCurrentLocationInfoAndChooseIt, updateLikeButton } from '../eventHandlers.js';
 import { favoriteList } from '../main.js';
 import { UI } from './UI.js';
+import emptyGif from '../../icons/weatherIcons/empty.gif';
+import icons from '../../icons/weatherIcons/*.svg';
 
 function updateWeatherElements(weather) {
     if (!weather) return;
@@ -17,9 +19,9 @@ function updateWeatherElements(weather) {
 
 function getWeatherIconSrc(weather) {
     if (!weather.icon) {
-        return `/icons/weatherIcons/empty.gif`;
+        return emptyGif;
     }
-    const iconPath = `/icons/weatherIcons/${weather.icon}.svg`;
+    const iconPath = icons[weather.icon];
     return iconPath;
 }
 

@@ -736,6 +736,10 @@ parcelHelpers.export(exports, "initializePage", ()=>initializePage);
 var _eventHandlersJs = require("../eventHandlers.js");
 var _mainJs = require("../main.js");
 var _uiJs = require("./UI.js");
+var _emptyGif = require("../../icons/weatherIcons/empty.gif");
+var _emptyGifDefault = parcelHelpers.interopDefault(_emptyGif);
+var _svg = require("../../icons/weatherIcons/*.svg");
+var _svgDefault = parcelHelpers.interopDefault(_svg);
 function updateWeatherElements(weather) {
     if (!weather) return;
     (0, _uiJs.UI).CHOSEN_LOCATION.textContent = weather.location;
@@ -747,8 +751,8 @@ function updateWeatherElements(weather) {
     (0, _uiJs.UI).SUNSET.textContent = weather.sunset;
 }
 function getWeatherIconSrc(weather) {
-    if (!weather.icon) return `/icons/weatherIcons/empty.gif`;
-    const iconPath = `/icons/weatherIcons/${weather.icon}.svg`;
+    if (!weather.icon) return 0, _emptyGifDefault.default;
+    const iconPath = (0, _svgDefault.default)[weather.icon];
     return iconPath;
 }
 function updateForecastElements(forecast) {
@@ -813,7 +817,7 @@ async function initializePage() {
     }
 }
 
-},{"../eventHandlers.js":"4840f","../main.js":"bDbGG","./UI.js":"eqk1K","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4840f":[function(require,module,exports) {
+},{"../eventHandlers.js":"4840f","../main.js":"bDbGG","./UI.js":"eqk1K","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../../icons/weatherIcons/*.svg":"9u3kw","../../icons/weatherIcons/empty.gif":"madt3"}],"4840f":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getLocationInfoBySearch", ()=>getLocationInfoBySearch);
@@ -1063,6 +1067,138 @@ function getLocationApiUrl(coordinates) {
     return `${locationServerInfo.url}?apikey=${locationServerInfo.apiKey}&geocode=${coordinates.longitude},${coordinates.latitude}&format=json`;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["kzbYw","bDbGG"], "bDbGG", "parcelRequirecf15")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9u3kw":[function(require,module,exports) {
+const _temp0 = require("a9988016a8a2f5b6");
+const _temp1 = require("522e8fca94ab93e4");
+const _temp2 = require("bdf14018ecf1129d");
+const _temp3 = require("45ae13b2c802150e");
+const _temp4 = require("78ae61e9bb3cf1ef");
+const _temp5 = require("eafdf877d296b373");
+const _temp6 = require("36a37ee86d2eb609");
+const _temp7 = require("510e3f9c4b163adc");
+const _temp8 = require("1aba8b0d87f3fe9");
+const _temp9 = require("1b0c2d5c73f288b1");
+const _temp10 = require("10ef84438c9c5dd8");
+const _temp11 = require("26272589ff7cfaa2");
+const _temp12 = require("37c2c0531d3b4c80");
+const _temp13 = require("49f1f37b7398ae7d");
+const _temp14 = require("32edc6a357f33325");
+const _temp15 = require("fe88cee9a0e80897");
+const _temp16 = require("dd2472af415dbf35");
+const _temp17 = require("1c9ba5b519c7c755");
+module.exports = {
+    "01d": _temp0,
+    "01n": _temp1,
+    "02d": _temp2,
+    "02n": _temp3,
+    "03d": _temp4,
+    "03n": _temp5,
+    "04d": _temp6,
+    "04n": _temp7,
+    "09d": _temp8,
+    "09n": _temp9,
+    "10d": _temp10,
+    "10n": _temp11,
+    "11d": _temp12,
+    "11n": _temp13,
+    "13d": _temp14,
+    "13n": _temp15,
+    "50d": _temp16,
+    "50n": _temp17
+};
+
+},{"a9988016a8a2f5b6":"bvIm7","522e8fca94ab93e4":"hVNCO","bdf14018ecf1129d":"2iagn","45ae13b2c802150e":"4aYBa","78ae61e9bb3cf1ef":"kQXbw","eafdf877d296b373":"5cHFO","36a37ee86d2eb609":"HKrBz","510e3f9c4b163adc":"iAOcG","1aba8b0d87f3fe9":"flnhI","1b0c2d5c73f288b1":"3oRyU","10ef84438c9c5dd8":"9L8X8","26272589ff7cfaa2":"k23Ac","37c2c0531d3b4c80":"6ScNl","49f1f37b7398ae7d":"hqSTz","32edc6a357f33325":"50pJQ","fe88cee9a0e80897":"6QUgd","dd2472af415dbf35":"3D3p2","1c9ba5b519c7c755":"hrB3J"}],"bvIm7":[function(require,module,exports) {
+module.exports = require("f20b5cc0e1a7096f").getBundleURL("1pq9E") + "01d.9067abd4.svg" + "?" + Date.now();
+
+},{"f20b5cc0e1a7096f":"lgJ39"}],"lgJ39":[function(require,module,exports) {
+"use strict";
+var bundleURL = {};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return "/";
+}
+function getBaseURL(url) {
+    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
+}
+// TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
+    if (!matches) throw new Error("Origin not found");
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}],"hVNCO":[function(require,module,exports) {
+module.exports = require("9c9dd9dcf1355655").getBundleURL("1pq9E") + "01n.48788e8e.svg" + "?" + Date.now();
+
+},{"9c9dd9dcf1355655":"lgJ39"}],"2iagn":[function(require,module,exports) {
+module.exports = require("8968cb4b98128282").getBundleURL("1pq9E") + "02d.486ba6af.svg" + "?" + Date.now();
+
+},{"8968cb4b98128282":"lgJ39"}],"4aYBa":[function(require,module,exports) {
+module.exports = require("f66c6d5bba6340fc").getBundleURL("1pq9E") + "02n.99c40ed5.svg" + "?" + Date.now();
+
+},{"f66c6d5bba6340fc":"lgJ39"}],"kQXbw":[function(require,module,exports) {
+module.exports = require("f4fd473e4b8b6aec").getBundleURL("1pq9E") + "03d.4edac016.svg" + "?" + Date.now();
+
+},{"f4fd473e4b8b6aec":"lgJ39"}],"5cHFO":[function(require,module,exports) {
+module.exports = require("6b4a2c2d211d1e4").getBundleURL("1pq9E") + "03n.6196a153.svg" + "?" + Date.now();
+
+},{"6b4a2c2d211d1e4":"lgJ39"}],"HKrBz":[function(require,module,exports) {
+module.exports = require("f110322793b04d34").getBundleURL("1pq9E") + "04d.fa181a97.svg" + "?" + Date.now();
+
+},{"f110322793b04d34":"lgJ39"}],"iAOcG":[function(require,module,exports) {
+module.exports = require("ef96137419b9a513").getBundleURL("1pq9E") + "04n.3834b652.svg" + "?" + Date.now();
+
+},{"ef96137419b9a513":"lgJ39"}],"flnhI":[function(require,module,exports) {
+module.exports = require("33902133dec090b5").getBundleURL("1pq9E") + "09d.2d9feb73.svg" + "?" + Date.now();
+
+},{"33902133dec090b5":"lgJ39"}],"3oRyU":[function(require,module,exports) {
+module.exports = require("647ed76269250fa").getBundleURL("1pq9E") + "09n.86eed5b6.svg" + "?" + Date.now();
+
+},{"647ed76269250fa":"lgJ39"}],"9L8X8":[function(require,module,exports) {
+module.exports = require("6c88cc64bdd86de5").getBundleURL("1pq9E") + "10d.a423ffd6.svg" + "?" + Date.now();
+
+},{"6c88cc64bdd86de5":"lgJ39"}],"k23Ac":[function(require,module,exports) {
+module.exports = require("704f230d0e57b87a").getBundleURL("1pq9E") + "10n.a7674cb2.svg" + "?" + Date.now();
+
+},{"704f230d0e57b87a":"lgJ39"}],"6ScNl":[function(require,module,exports) {
+module.exports = require("6f81eb778c832673").getBundleURL("1pq9E") + "11d.2b08c3c1.svg" + "?" + Date.now();
+
+},{"6f81eb778c832673":"lgJ39"}],"hqSTz":[function(require,module,exports) {
+module.exports = require("7b72b7a595761c49").getBundleURL("1pq9E") + "11n.bf5ebeb5.svg" + "?" + Date.now();
+
+},{"7b72b7a595761c49":"lgJ39"}],"50pJQ":[function(require,module,exports) {
+module.exports = require("17c5f4cf1f990d5").getBundleURL("1pq9E") + "13d.31aedd49.svg" + "?" + Date.now();
+
+},{"17c5f4cf1f990d5":"lgJ39"}],"6QUgd":[function(require,module,exports) {
+module.exports = require("bcfa040bcd01e533").getBundleURL("1pq9E") + "13n.cd46014c.svg" + "?" + Date.now();
+
+},{"bcfa040bcd01e533":"lgJ39"}],"3D3p2":[function(require,module,exports) {
+module.exports = require("2bec1112760ea28e").getBundleURL("1pq9E") + "50d.40383609.svg" + "?" + Date.now();
+
+},{"2bec1112760ea28e":"lgJ39"}],"hrB3J":[function(require,module,exports) {
+module.exports = require("d9086e5c4aef350d").getBundleURL("1pq9E") + "50n.14b7dccd.svg" + "?" + Date.now();
+
+},{"d9086e5c4aef350d":"lgJ39"}],"madt3":[function(require,module,exports) {
+module.exports = require("877690af442cb86a").getBundleURL("1pq9E") + "empty.90a82349.gif" + "?" + Date.now();
+
+},{"877690af442cb86a":"lgJ39"}]},["kzbYw","bDbGG"], "bDbGG", "parcelRequirecf15")
 
 //# sourceMappingURL=index.fbb3188c.js.map
