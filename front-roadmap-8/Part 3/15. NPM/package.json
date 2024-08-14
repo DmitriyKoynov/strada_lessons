@@ -102,6 +102,8 @@
     },
     "author": "",
     "license": "ISC",
-    "description": ""
+    "description": "",
+    "devDependencies": {
+        "@parcel/resolver-glob": "^2.12.0"
+    }
 }
-
