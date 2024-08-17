@@ -6,6 +6,8 @@ export default [
     pluginJs.configs.recommended,
     {
         rules: {
+            'prefer-const': 'warn',
+            'no-var': 'error',
             'no-unused-vars': 'error',
             'no-undef': 'error',
         },

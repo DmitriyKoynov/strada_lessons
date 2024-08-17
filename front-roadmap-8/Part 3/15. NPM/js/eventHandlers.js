@@ -7,6 +7,7 @@ import { UI } from './UI/UI.js';
 import { TEMPERATURE_MEASUREMENT_SYSTEMS } from './utils.js';
 import { getCurrentLocation } from './api/geolocationApi.js';
 import { localStorageManager } from './localStorageManager.js';
+import Cookies from 'js-cookie';
 
 export function getLocationInfoBySearch(event) {
     event.preventDefault();
@@ -16,15 +17,16 @@ export function getLocationInfoBySearch(event) {
 function getSearchInputValue() {
     return UI.SEARCH_INPUT.value;
 }
-async function updateChosenLocationPageInfo(locationName) {
+export async function updateChosenLocationPageInfo(locationName) {
     try {
         const [weatherInfoFromServer, forecastInfoFromServer] = await getLocationInfoFromServer(
             locationName,
-            chosenLocation.temperatureSystem
+            chosenLocation.temperatureSystem,
         );
         chosenLocation.weather = parseWeatherInfo(weatherInfoFromServer);
         chosenLocation.forecast = parseForecastInfo(forecastInfoFromServer, chosenLocation.forecastElementsAmount);
         createPage(undefined, chosenLocation);
+        Cookies.set('chosenLocation', locationName, { expires: 1 });
     } catch (error) {
         console.error(error);
     }
@@ -92,7 +94,7 @@ function removeLocationFromFavoriteList(locationName) {
 
 const SUCCESS_MESSAGES = {
     addSuccess: location => `Локация '${location}' добавлена в список избранных`,
-    removeSuccess: location => `Локация '${location}' удалена из списка избранных`
+    removeSuccess: location => `Локация '${location}' удалена из списка избранных`,
 };
 
 export function convertTemperatureValue() {

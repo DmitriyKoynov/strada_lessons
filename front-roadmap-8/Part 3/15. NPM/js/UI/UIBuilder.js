@@ -1,8 +1,9 @@
-import { getCurrentLocationInfoAndChooseIt, updateLikeButton } from '../eventHandlers.js';
+import { getCurrentLocationInfoAndChooseIt, updateLikeButton, updateChosenLocationPageInfo } from '../eventHandlers.js';
 import { favoriteList } from '../main.js';
 import { UI } from './UI.js';
 import emptyGif from '../../icons/weatherIcons/empty.gif';
 import icons from '../../icons/weatherIcons/*.svg';
+import Cookies from 'js-cookie';
 
 function updateWeatherElements(weather) {
     if (!weather) return;
@@ -91,7 +92,11 @@ export function createPage(favoriteList, chosenLocation) {
 }
 export async function initializePage() {
     try {
-        await getCurrentLocationInfoAndChooseIt();
+        if (Cookies.get('chosenLocation')) {
+            updateChosenLocationPageInfo(Cookies.get('chosenLocation'));
+        } else {
+            await getCurrentLocationInfoAndChooseIt();
+        }
         createPage(favoriteList);
     } catch (error) {
         console.error(error);

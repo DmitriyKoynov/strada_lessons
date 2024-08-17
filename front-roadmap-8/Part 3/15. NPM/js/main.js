@@ -9,7 +9,7 @@ import {
     removeFavoriteLocationByRemoveButton,
     likeOrUnlikeLocation,
     convertTemperatureValue,
-    getCurrentLocationInfoAndChooseIt
+    getCurrentLocationInfoAndChooseIt,
 } from './eventHandlers.js';
 
 UI.SUBMIT_BUTTON.addEventListener('click', getLocationInfoBySearch);

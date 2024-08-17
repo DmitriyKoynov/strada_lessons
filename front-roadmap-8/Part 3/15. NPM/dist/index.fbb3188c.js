@@ -738,6 +738,8 @@ var _emptyGif = require("../../icons/weatherIcons/empty.gif");
 var _emptyGifDefault = parcelHelpers.interopDefault(_emptyGif);
 var _svg = require("../../icons/weatherIcons/*.svg");
 var _svgDefault = parcelHelpers.interopDefault(_svg);
+var _jsCookie = require("js-cookie");
+var _jsCookieDefault = parcelHelpers.interopDefault(_jsCookie);
 function updateWeatherElements(weather) {
     if (!weather) return;
     (0, _uiJs.UI).CHOSEN_LOCATION.textContent = weather.location;
@@ -808,17 +810,19 @@ function createPage(favoriteList, chosenLocation) {
 }
 async function initializePage() {
     try {
-        await (0, _eventHandlersJs.getCurrentLocationInfoAndChooseIt)();
+        if ((0, _jsCookieDefault.default).get("chosenLocation")) (0, _eventHandlersJs.updateChosenLocationPageInfo)((0, _jsCookieDefault.default).get("chosenLocation"));
+        else await (0, _eventHandlersJs.getCurrentLocationInfoAndChooseIt)();
         createPage((0, _mainJs.favoriteList));
     } catch (error) {
         console.error(error);
     }
 }
 
-},{"../eventHandlers.js":"4840f","../main.js":"bDbGG","./UI.js":"eqk1K","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../../icons/weatherIcons/*.svg":"9u3kw","../../icons/weatherIcons/empty.gif":"madt3"}],"4840f":[function(require,module,exports) {
+},{"../eventHandlers.js":"4840f","../main.js":"bDbGG","./UI.js":"eqk1K","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../../icons/weatherIcons/*.svg":"9u3kw","../../icons/weatherIcons/empty.gif":"madt3","js-cookie":"c8bBu"}],"4840f":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getLocationInfoBySearch", ()=>getLocationInfoBySearch);
+parcelHelpers.export(exports, "updateChosenLocationPageInfo", ()=>updateChosenLocationPageInfo);
 parcelHelpers.export(exports, "showRemoveButtonOnRow", ()=>showRemoveButtonOnRow);
 parcelHelpers.export(exports, "chooseFavoriteLocation", ()=>chooseFavoriteLocation);
 parcelHelpers.export(exports, "removeFavoriteLocationByRemoveButton", ()=>removeFavoriteLocationByRemoveButton);
@@ -835,6 +839,8 @@ var _uiJs = require("./UI/UI.js");
 var _utilsJs = require("./utils.js");
 var _geolocationApiJs = require("./api/geolocationApi.js");
 var _localStorageManagerJs = require("./localStorageManager.js");
+var _jsCookie = require("js-cookie");
+var _jsCookieDefault = parcelHelpers.interopDefault(_jsCookie);
 function getLocationInfoBySearch(event) {
     event.preventDefault();
     const locationName = getSearchInputValue();
@@ -849,6 +855,9 @@ async function updateChosenLocationPageInfo(locationName) {
         (0, _mainJs.chosenLocation).weather = (0, _weatherParserJs.parseWeatherInfo)(weatherInfoFromServer);
         (0, _mainJs.chosenLocation).forecast = (0, _forecastParserJs.parseForecastInfo)(forecastInfoFromServer, (0, _mainJs.chosenLocation).forecastElementsAmount);
         (0, _uibuilderJs.createPage)(undefined, (0, _mainJs.chosenLocation));
+        (0, _jsCookieDefault.default).set("chosenLocation", locationName, {
+            expires: 1
+        });
     } catch (error) {
         console.error(error);
     }
@@ -939,7 +948,7 @@ function updateLikeButton() {
     if (!isCurrentLocationFavorite) (0, _uiJs.UI).LIKE_BUTTON.classList.remove("like-button--liked");
 }
 
-},{"./api/weatherApi.js":"aCZ9o","./main.js":"bDbGG","./parsers/weatherParser.js":"dsiwE","./parsers/forecastParser.js":"clKQM","./UI/UIBuilder.js":"j4Ekl","./UI/UI.js":"eqk1K","./utils.js":"eYK4L","./api/geolocationApi.js":"edtQt","./localStorageManager.js":"lXvOE","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aCZ9o":[function(require,module,exports) {
+},{"./api/weatherApi.js":"aCZ9o","./main.js":"bDbGG","./parsers/weatherParser.js":"dsiwE","./parsers/forecastParser.js":"clKQM","./UI/UIBuilder.js":"j4Ekl","./UI/UI.js":"eqk1K","./utils.js":"eYK4L","./api/geolocationApi.js":"edtQt","./localStorageManager.js":"lXvOE","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","js-cookie":"c8bBu"}],"aCZ9o":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "REQUEST_TYPE", ()=>REQUEST_TYPE);
@@ -1065,7 +1074,97 @@ function getLocationApiUrl(coordinates) {
     return `${locationServerInfo.url}?apikey=${locationServerInfo.apiKey}&geocode=${coordinates.longitude},${coordinates.latitude}&format=json`;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9u3kw":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"c8bBu":[function(require,module,exports) {
+(function(global, factory) {
+    module.exports = factory();
+})(this, function() {
+    "use strict";
+    /* eslint-disable no-var */ function assign(target) {
+        for(var i = 1; i < arguments.length; i++){
+            var source = arguments[i];
+            for(var key in source)target[key] = source[key];
+        }
+        return target;
+    }
+    /* eslint-enable no-var */ /* eslint-disable no-var */ var defaultConverter = {
+        read: function(value) {
+            if (value[0] === '"') value = value.slice(1, -1);
+            return value.replace(/(%[\dA-F]{2})+/gi, decodeURIComponent);
+        },
+        write: function(value) {
+            return encodeURIComponent(value).replace(/%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[BCD])/g, decodeURIComponent);
+        }
+    };
+    /* eslint-enable no-var */ /* eslint-disable no-var */ function init(converter, defaultAttributes) {
+        function set(name, value, attributes) {
+            if (typeof document === "undefined") return;
+            attributes = assign({}, defaultAttributes, attributes);
+            if (typeof attributes.expires === "number") attributes.expires = new Date(Date.now() + attributes.expires * 864e5);
+            if (attributes.expires) attributes.expires = attributes.expires.toUTCString();
+            name = encodeURIComponent(name).replace(/%(2[346B]|5E|60|7C)/g, decodeURIComponent).replace(/[()]/g, escape);
+            var stringifiedAttributes = "";
+            for(var attributeName in attributes){
+                if (!attributes[attributeName]) continue;
+                stringifiedAttributes += "; " + attributeName;
+                if (attributes[attributeName] === true) continue;
+                // Considers RFC 6265 section 5.2:
+                // ...
+                // 3.  If the remaining unparsed-attributes contains a %x3B (";")
+                //     character:
+                // Consume the characters of the unparsed-attributes up to,
+                // not including, the first %x3B (";") character.
+                // ...
+                stringifiedAttributes += "=" + attributes[attributeName].split(";")[0];
+            }
+            return document.cookie = name + "=" + converter.write(value, name) + stringifiedAttributes;
+        }
+        function get(name) {
+            if (typeof document === "undefined" || arguments.length && !name) return;
+            // To prevent the for loop in the first place assign an empty array
+            // in case there are no cookies at all.
+            var cookies = document.cookie ? document.cookie.split("; ") : [];
+            var jar = {};
+            for(var i = 0; i < cookies.length; i++){
+                var parts = cookies[i].split("=");
+                var value = parts.slice(1).join("=");
+                try {
+                    var found = decodeURIComponent(parts[0]);
+                    jar[found] = converter.read(value, found);
+                    if (name === found) break;
+                } catch (e) {}
+            }
+            return name ? jar[name] : jar;
+        }
+        return Object.create({
+            set,
+            get,
+            remove: function(name, attributes) {
+                set(name, "", assign({}, attributes, {
+                    expires: -1
+                }));
+            },
+            withAttributes: function(attributes) {
+                return init(this.converter, assign({}, this.attributes, attributes));
+            },
+            withConverter: function(converter) {
+                return init(assign({}, this.converter, converter), this.attributes);
+            }
+        }, {
+            attributes: {
+                value: Object.freeze(defaultAttributes)
+            },
+            converter: {
+                value: Object.freeze(converter)
+            }
+        });
+    }
+    var api = init(defaultConverter, {
+        path: "/"
+    });
+    /* eslint-enable no-var */ return api;
+});
+
+},{}],"9u3kw":[function(require,module,exports) {
 const _temp0 = require("a9988016a8a2f5b6");
 const _temp1 = require("522e8fca94ab93e4");
 const _temp2 = require("bdf14018ecf1129d");
