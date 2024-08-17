@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="css/fonts.css" />
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <div class="body-container">
+            <header class="header">
+                <div class="header-container">
+                    <div class="header-nickname">@nickname</div>
+                    <nav class="header-navigation">
+                        <a class="header-navigation__link" href="#">Мои работы</a>
+                        <a class="header-navigation__link" href="#">Обо мне</a>
+                        <a class="header-navigation__link" href="#">Контакты</a>
+                    </nav>
+                </div>
+            </header>
+            <main class="main">
+                <div class="main-container">
+                    <section class="about">
+                        <div class="about-content">
+                            <h2 class="h2-title about-content__title title--white">Я — фронтендер</h2>
+                            <div class="about-content__description">
+                                <p class="body-text about-content__description-text">
+                                    Какая-то очень интересная информация обо мне. Очень интересная информация...
+                                </p>
+                            </div>
+                            <button class="about-content__button rounded-button--white">Cвязаться со мной</button>
+                        </div>
+                        <img class="about-image" src="images/avatar.jpg" alt="Фото фронтендера" />
+                    </section>
+                    <section class="possibilities-section">
+                        <h2 class="h2-title possibilities__title title--black">Я умею</h2>
+                        <ul class="possibilities-list square-list">
+                            <li class="square-list-item square-list-item--dark-bg">
+                                <img class="square-item__image" src="images/possibilities_html.png" alt="" />
+                                <div class="square-item__title-container">
+                                    <p class="h3-title title--white">HTML</p>
+                                </div>
+                            </li>
+                            <li class="square-list-item square-list-item--light-bg">
+                                <img class="square-item__image" src="images/possibilities_css.png" alt="" />
+                                <div class="square-item__title-container">
+                                    <p class="h3-title title--white">CSS</p>
+                                </div>
+                            </li>
+                            <li class="square-list-item square-list-item--dark-bg">
+                                <img class="square-item__image" src="images/possibilities_js.png" alt="" />
+                                <div class="square-item__title-container">
+                                    <p class="h3-title title--white">JS</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                    <section class="works">
+                        <h2 class="h2-title works__title title--white">Мои проекты</h2>
+                        <ul class="works-list">
+                            <li class="works-item">
+                                <img class="works-item__cover" src="images/works-1.jpg" alt="Работа №1" />
+                                <div class="works-item__description">
+                                    <h3 class="h4-title work__title title--white">Сайт персонального тренера</h3>
+                                    <p class="body-text">
+                                        Разработан современный веб-сайт для тренера, специализирующегося на софт-скилах.
+                                        Цель - создать платформу для демонстрации услуг, бронирования сессий и
+                                        онлайн-обучения. Сайт адаптивный, с высокой скоростью загрузки, простым
+                                        интерфейсом и безопасностью данных. Проект включает UI/UX дизайн,
+                                        бэкенд-разработку и интеграцию с API. Результат - мощная платформа для развития
+                                        бизнеса тренера.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="works-item works-item--reverse">
+                                <img class="works-item__cover" src="images/works-2.jpg" alt="Работа №2" />
+                                <div class="works-item__description">
+                                    <h3 class="h4-title work__title title--white">Личный сайт веб-дизайнера</h3>
+                                    <p class="body-text">
+                                        Разработан персональный сайт для веб-дизайнера, который является портфолием его
+                                        работ в графическом дизайне и UX/UI. Сайт минималистичен, акцентирует внимание
+                                        на контенте. Адаптивный дизайн обеспечивает идеальное отображение на всех
+                                        устройствах. Платформа оптимизирована для SEO, имеет высокую производительность
+                                        и безопасность. Предоставляет инструменты для связи, упрощая взаимодействие с
+                                        клиентами.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="works-item">
+                                <img class="works-item__cover" src="images/works-3.jpg" alt="Работа №3" />
+                                <div class="works-item__description">
+                                    <h3 class="h4-title work__title title--white">
+                                        Сайт-визитка модного дома «Vol-cano»
+                                    </h3>
+                                    <p class="body-text">
+                                        Создан сайт-визитка для модного дома 'Vol-cano', отражающий его стиль и
+                                        философию. Сайт представляет коллекции, историю бренда и новости моды.
+                                        Минималистичный и интуитивный интерфейс обеспечивает легкую навигацию.
+                                        Адаптивный дизайн идеально отображается на всех устройствах. Высокая скорость
+                                        загрузки и безопасность данных обеспечивают положительный опыт посещения.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                    <section class="form-section">
+                        <div class="form-section__container section__container">
+                            <h2 class="h2-title form__title title--black">Оставьте заявку</h2>
+                            <form class="form" action="" method="post">
+                                <input class="input" type="text" placeholder="Ваше имя" required />
+                                <input class="input" type="email" placeholder="Ваша почта" required />
+                                <input class="input" type="tel" placeholder="Ваш телефон" required />
+                                <div class="form__buttons">
+                                    <button class="button" type="button">Очистить</button>
+                                    <button class="button" type="submit">Отправить</button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                    <section class="contacts-section">
+                        <div class="contacts-section__container section__container">
+                            <h2 class="h2-title contacts__title title--white">Контакты</h2>
+                            <ul class="square-list contacts-list">
+                                <li class="square-list-item square-list-item--dark-bg">
+                                    <div class="square-item__title-container">
+                                        <p class="h3-title title--white">HTML</p>
+                                        <a href="#" class="square-link">Ссылка</a>
+                                    </div>
+                                </li>
+                                <li class="square-list-item square-list-item--light-bg">
+                                    <div class="square-item__title-container">
+                                        <p class="h3-title title--white">CSS</p>
+                                        <a href="#" class="square-link">Ссылка</a>
+                                    </div>
+                                </li>
+                                <li class="square-list-item square-list-item--dark-bg">
+                                    <div class="square-item__title-container">
+                                        <p class="h3-title title--white">JS</p>
+                                        <a href="#" class="square-link">Ссылка</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                    <footer class="header">
+                        <div class="header-container">
+                            <div class="header-nickname">@nickname</div>
+                            <nav class="header-navigation">
+                                <a class="header-navigation__link header-navigation__link--no-underline" href="#"
+                                    >Мои работы</a
+                                >
+                                <a class="header-navigation__link header-navigation__link--no-underline" href="#"
+                                    >Обо мне</a
+                                >
+                                <a class="header-navigation__link header-navigation__link--no-underline" href="#"
+                                    >Контакты</a
+                                >
+                            </nav>
+                        </div>
+                    </footer>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>

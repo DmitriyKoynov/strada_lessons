@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="fonts.css" />
+        <title>Калькулятор</title>
+    </head>
+    <body>
+        <div class="content">
+            <div class="tasks-wrapper high-priority-tasks">
+                <h1 class="header h1">High</h1>
+                <form class="tasks-form">
+                    <div class="control create-task">
+                        <input class="input create-task-input" type="text" placeholder="Добавить важных дел" />
+                        <button class="add-button" type="button"></button>
+                    </div>
+                </form>
+                <div class="tasks-list">
+                    <!-- <div class="control task">
+                        <input class="radio task-radio" name="radio1" id="radio1" type="radio" />
+                        <p class="task-text radio1-text">
+                            Вот вам и супер интересная тема. Вы наверняка заметили что ваши файлы с кодом становятся все
+                            объемнее, что хочется вынести некоторые вещи куда-то за пределы основной программы.
+                        </p>
+                        <button class="delete-button" type="button"></button>
+                    </div>
+                    <div class="control task">
+                        <input class="radio task-radio done-radio" name="radio2" id="radio2" type="radio" />
+                        <p class="task-text radio2-text">Сверстать этот TODO list</p>
+                        <button class="delete-button" type="button"></button>
+                    </div>
+                    <div class="control task done-task">
+                        <input class="radio task-radio" name="radio3" id="radio3" type="radio" checked />
+                        <p class="task-text radio3-text">Начать делать задачу</p>
+                        <button class="delete-button" type="button"></button>
+                    </div> -->
+                </div>
+            </div>
+            <div class="tasks-wrapper low-priority-tasks">
+                <h1 class="header h1">Low</h1>
+                <form class="tasks-form">
+                    <div class="control create-task">
+                        <input class="input create-task-input" type="text" placeholder="Добавить" />
+                        <button class="add-button" type="button"></button>
+                    </div>
+                </form>
+                <div class="tasks-list">
+                    <!-- <div class="control task">
+                        <input class="radio task-radio" name="radio4" id="radio4" type="radio" />
+                        <p class="task-text radio4-text">Посмотреть ютубчик</p>
+                        <button class="delete-button" type="button"></button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <script type="module" src="todoOnArrays.js"></script>
+        <script type="module" src="script.js"></script>
+        <!--<script src="theory.js" defer></script> -->
+    </body>
+</html>
