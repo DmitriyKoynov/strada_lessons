@@ -46,6 +46,8 @@ logs/
 node_modules/
 parcel-bundle-reports/
 tmp
+.parcel-cache/
+dist/
 
 /target/
 
