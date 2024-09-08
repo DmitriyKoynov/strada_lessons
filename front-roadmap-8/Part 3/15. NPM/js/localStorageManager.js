@@ -8,5 +8,5 @@ export const localStorageManager = {
     setFavoritesData: function (favoritesData) {
         const dataToStore = JSON.stringify([...favoritesData]);
         localStorage.setItem('favoritesData', dataToStore);
-    }
+    },
 };

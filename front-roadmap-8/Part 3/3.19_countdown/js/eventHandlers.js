@@ -1,10 +1,10 @@
 import { calculateDifferenceBetweenDateAndNow } from './helpers';
-import { getDateValueFromForm } from './UI';
-import { setTimeValue } from './UI';
+import { getDateValue } from './UI';
+import { setDifferenceValue } from './UI';
 
 export function calculateDifference(event) {
     event.preventDefault();
-    const date = getDateValueFromForm();
+    const date = getDateValue();
     const difference = calculateDifferenceBetweenDateAndNow(date);
-    setTimeValue(difference);
+    setDifferenceValue(difference);
 }

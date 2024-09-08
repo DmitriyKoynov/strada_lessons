@@ -3,10 +3,9 @@ export const UI = {
     inputDate: document.body.querySelector('#date'),
     timeRemainingField: document.body.querySelector('.time-remaining_value'),
 };
-export function setTimeValue(value) {
+export function setDifferenceValue(value) {
     UI.timeRemainingField.textContent = value;
 }
-export function getDateValueFromForm() {
-    const dateFromInput = new Date(UI.inputDate.value.split('-'));
-    return new Date(dateFromInput);
+export function getDateValue() {
+    return new Date(UI.inputDate.value);
 }

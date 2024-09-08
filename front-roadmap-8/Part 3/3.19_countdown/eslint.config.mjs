@@ -10,7 +10,9 @@ export default [
             'no-var': 'error',
             'no-unused-vars': 'error',
             'no-undef': 'error',
-            'no-console': 'error',
+            'no-multi-spaces': ['error'],
+            camelcase: ['error', { ignoreDestructuring: true }],
+            'no-console': ['error', { allow: ['warn', 'error'] }],
         },
     },
 ];
